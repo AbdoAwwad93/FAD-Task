@@ -14,15 +14,16 @@ namespace FadTask
     {
         public static void Main(string[] args)
         {
-            Env.Load();
+            var envPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".env");
+            Env.Load(envPath);
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
 
-            // JWT Authentication
-            var jwtSection = builder.Configuration.GetSection("Jwt");
-            var key = jwtSection["Key"] ?? string.Empty;
+            var key = Env.GetString("Jwt__Key", null)
+                ?? throw new InvalidOperationException(
+                    "JWT Key is not configured. Set Jwt__Key in the .env file.");
 
             builder.Services.AddAuthentication(options =>
             {
