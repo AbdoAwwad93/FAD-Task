@@ -1,0 +1,6 @@
+@FadTask_HostAddress = http://localhost:5183
+
+GET {{FadTask_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

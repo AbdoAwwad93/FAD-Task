@@ -1,0 +1,58 @@
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Rider files
+.idea/
+*.sln.iml
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userprefs
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Visual Studio cache/options
+*.VC.db
+*.VC.VC.opendb
+
+# Build logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# ASP.NET temporary files
+_[Tt]emp*/
+
+# Local history and temporary files
+*.pidb
+*.svclog
+*.cache
+*.pdb
+*.mdb
+
+# npm
+node_modules/
+
+# JetBrains Rider
+.idea/
+
+# VS Code settings
+.vscode/
