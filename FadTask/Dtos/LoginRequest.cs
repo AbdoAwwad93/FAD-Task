@@ -5,7 +5,7 @@ namespace FadTask.Dtos
     public class LoginRequest
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; } = default!;
 
         [Required]
