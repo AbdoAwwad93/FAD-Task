@@ -21,10 +21,7 @@ namespace FadTask
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
 
-            var key = Env.GetString("Jwt__Key", null)
-                ?? throw new InvalidOperationException(
-                    "JWT Key is not configured. Set Jwt__Key in the .env file.");
-
+            var key = Env.GetString("Jwt__Key", null);
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -64,6 +61,17 @@ namespace FadTask
                 {
                     userRepo.Add(new Models.User { Email = demoEmail, Password = demoPass });
                 }
+            }
+
+            // Seed demo tasks
+            var taskRepo = app.Services.GetRequiredService<ITaskRepository>();
+            if (!taskRepo.GetTasks().Any())
+            {
+                taskRepo.CreateTask("Complete project proposal", "Draft and submit the Q3 project proposal to the stakeholders.");
+                taskRepo.CreateTask("Review pull requests", "Review open PRs on the frontend repository.");
+                taskRepo.CreateTask("Update API documentation", "Add missing endpoint docs for the new reporting module.");
+                taskRepo.CreateTask("Fix login timeout issue", "Session expires too quickly on mobile devices.");
+                taskRepo.CreateTask("Prepare demo environment", "Set up staging environment for the client demo on Friday.");
             }
 
 
