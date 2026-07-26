@@ -1,4 +1,4 @@
-# FadTask - Task Management API
+# Task Management API
 
 A .NET 9 Web API for managing tasks with JWT authentication.
 
